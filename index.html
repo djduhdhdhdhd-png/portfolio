@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes" />
+    <title>Марк · 14 лет</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #eef2f6;
+            line-height: 1.5;
+            min-height: 100vh;
+            padding: 1.2rem 1rem 2rem;
+            position: relative;
+            overflow-x: hidden;
+            background: #05060a;
+        }
+
+        /* Простой космический фон */
+        .space-bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background: 
+                /* Глубокий космос */
+                radial-gradient(ellipse at 30% 40%, #0a0e1a 0%, #030408 70%, #010103 100%),
+                /* Млечный путь — лёгкая туманность */
+                radial-gradient(ellipse at 70% 60%, rgba(60, 40, 120, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 20% 80%, rgba(40, 20, 80, 0.06) 0%, transparent 40%),
+                radial-gradient(ellipse at 80% 20%, rgba(20, 40, 100, 0.05) 0%, transparent 45%);
+            background-blend-mode: normal, screen, screen, screen;
+        }
+
+        /* Звёзды — мерцающие */
+        .stars {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            background-image: 
+                radial-gradient(2px 2px at 5% 10%, #fff, rgba(0,0,0,0)),
+                radial-gradient(1.5px 1.5px at 15% 85%, #f0e6d0, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 25% 20%, #ffe8d0, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 35% 70%, #e0d0ff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 45% 15%, #fff, rgba(0,0,0,0)),
+                radial-gradient(1.5px 1.5px at 55% 90%, #ffe0b0, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 65% 45%, #c0d0ff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 75% 5%, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 85% 60%, #ffe8c0, rgba(0,0,0,0)),
+                radial-gradient(1.5px 1.5px at 92% 35%, #d0d8ff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 10% 50%, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 30% 40%, #ffeedd, rgba(0,0,0,0)),
+                radial-gradient(1.5px 1.5px at 50% 60%, #e8e0ff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 70% 75%, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 90% 15%, #ffe0c0, rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 300px 300px;
+            opacity: 0.8;
+            animation: twinkle 5s ease-in-out infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 65vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 1rem 0 0.5rem;
+        }
+
+        .hero__badge {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 0.25rem 1rem;
+            border-radius: 60px;
+            font-size: 0.7rem;
+            letter-spacing: 0.3px;
+            color: #b7c9e2;
+            margin-bottom: 1.2rem;
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 10vw, 3.8rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #f0f6ff 0%, #a6c1ff 80%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #c0d4ff, #7a9cff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero__sub {
+            font-size: clamp(0.9rem, 2vw, 1.2rem);
+            font-weight: 400;
+            color: #c8d8f0;
+            margin: 0.3rem 0 0.6rem;
+            background: rgba(0,0,0,0.25);
+            backdrop-filter: blur(4px);
+            padding: 0.3rem 1rem;
+            border-radius: 60px;
+            border-left: 3px solid #4a6cf7;
+            display: inline-block;
+        }
+
+        .hero__intro {
+            font-size: 0.95rem;
+            color: #b6c9e6;
+            max-width: 400px;
+            margin: 0.5rem 0 1.2rem;
+            background: rgba(12, 15, 25, 0.4);
+            backdrop-filter: blur(4px);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .btn {
+            display: inline-block;
+            background: rgba(50, 70, 150, 0.6);
+            color: #fff;
+            font-weight: 600;
+            padding: 0.6rem 1.8rem;
+            border-radius: 60px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 14px rgba(30, 60, 180, 0.2);
+            transition: all 0.2s ease;
+            backdrop-filter: blur(4px);
+            cursor: pointer;
+            width: fit-content;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            background: #4060d0;
+            box-shadow: 0 8px 20px rgba(50, 80, 220, 0.4);
+        }
+
+        .section {
+            padding: 2rem 0 1.5rem;
+            scroll-margin-top: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.4rem, 4vw, 2rem);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #eaf0ff, #b0caff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+            border-bottom: 2px solid #3b5bdb;
+            padding-bottom: 0.1rem;
+        }
+
+        /* Навыки */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-badge {
+            background: rgba(22, 28, 48, 0.5);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 60px;
+            padding: 0.3rem 1.2rem;
+            font-weight: 500;
+            font-size: 0.85rem;
+            color: #d3def5;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            user-select: none;
+            border-bottom: 2px solid transparent;
+        }
+
+        .skill-badge:hover {
+            background: rgba(50, 70, 140, 0.4);
+            border-color: #4f7aff;
+            transform: scale(1.02);
+        }
+
+        .skill-badge.active {
+            border-bottom: 2px solid #6a8cff;
+            background: rgba(40, 60, 150, 0.4);
+        }
+
+        .skill-description {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s;
+            background: rgba(12, 15, 28, 0.4);
+            backdrop-filter: blur(4px);
+            border-radius: 20px;
+            padding: 0 1.2rem;
+            margin: 0.3rem 0 0.5rem;
+            border-left: 3px solid #4f7aff;
+            color: #c6d5f0;
+            font-size: 0.9rem;
+            width: 100%;
+        }
+
+        .skill-description.open {
+            max-height: 180px;
+            opacity: 1;
+            padding: 0.7rem 1.2rem;
+            margin: 0.5rem 0 0.8rem;
+        }
+
+        /* Проект */
+        .project-card {
+            background: rgba(16, 20, 35, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 28px;
+            padding: 1.2rem 1.5rem 1.5rem;
+            max-width: 500px;
+            box-shadow: 0 12px 30px -6px rgba(0,0,0,0.5);
+            transition: all 0.2s ease;
+            border-left: 3px solid #3f6aff;
+        }
+
+        .project-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px -8px #0a0c1a;
+        }
+
+        .project-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #e2ebff, #a4beff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.2rem;
+        }
+
+        .project-card .meta {
+            color: #a3b9dd;
+            font-size: 0.75rem;
+            margin-bottom: 0.6rem;
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        .project-card .meta span {
+            background: rgba(255,255,255,0.02);
+            padding: 0.1rem 0.8rem;
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .project-card p {
+            color: #c8d6ed;
+            margin: 0.5rem 0 1rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .project-card .btn-link {
+            background: transparent;
+            border: 1px solid #4f7aff;
+            color: #b6ccff;
+            padding: 0.3rem 1.4rem;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+            display: inline-block;
+        }
+
+        .project-card .btn-link:hover {
+            background: #3b5bdb;
+            color: white;
+            border-color: #7a9cff;
+            box-shadow: 0 0 16px #2f4fbf;
+        }
+
+        .quote-block {
+            background: rgba(16, 20, 35, 0.3);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 24px;
+            padding: 1.5rem 2rem;
+            margin: 2rem 0 1rem;
+            text-align: center;
+            font-style: italic;
+            color: #b0c8e8;
+            border-left: 3px solid #4a6cf7;
+            font-size: 0.95rem;
+        }
+
+        .quote-block span {
+            display: block;
+            margin-top: 0.5rem;
+            font-style: normal;
+            font-size: 0.8rem;
+            color: #6d8bb0;
+        }
+
+        .stats-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0 0.5rem;
+        }
+
+        .stat-item {
+            background: rgba(16, 20, 35, 0.3);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 0.8rem 1.5rem;
+            flex: 1 1 auto;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .stat-item .number {
+            font-size: 1.4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #eaf0ff, #7a9cff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .stat-item .label {
+            font-size: 0.7rem;
+            color: #8aa0c0;
+            margin-top: 0.1rem;
+        }
+
+        .footer-note {
+            margin-top: 2.5rem;
+            color: #6d7fa0;
+            font-size: 0.75rem;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.02);
+            padding-top: 1.5rem;
+        }
+
+        @media (max-width: 500px) {
+            body { padding: 0.8rem 0.8rem 1.5rem; }
+            .hero { min-height: 55vh; }
+            .hero__intro { font-size: 0.85rem; }
+            .skill-badge { font-size: 0.8rem; padding: 0.2rem 1rem; }
+            .project-card { padding: 1rem; }
+            .quote-block { padding: 1rem; }
+            .stat-item { padding: 0.5rem 1rem; min-width: 70px; }
+        }
+
+        html {
+            scroll-behavior: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Простой космос -->
+    <div class="space-bg"></div>
+    <div class="stars"></div>
+
+    <div class="container">
+        <!-- Hero -->
+        <section class="hero" id="home">
+            <div class="hero__badge">🚀 только начинаю</div>
+            <h1>Марк <span>· 14 лет</span></h1>
+            <div class="hero__sub">Минск, Беларусь</div>
+            <p class="hero__intro">Увлекаюсь технологиями и цифровыми проектами. Постоянно учусь новому и экспериментирую.</p>
+            <a href="#projects" class="btn" id="projectsBtn">Мои проекты ↓</a>
+        </section>
+
+        <!-- Навыки -->
+        <section class="section" id="skills">
+            <h2 class="section-title">⚡ Навыки</h2>
+            <div class="skills-grid" id="skillsGrid"></div>
+            <div id="skillDescriptions"></div>
+        </section>
+
+        <!-- Цитата -->
+        <div class="quote-block">
+            «Код — это поэзия, а я только учусь писать стихи»
+            <span>— Марк, 14 лет</span>
+        </div>
+
+        <!-- Статистика -->
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="number">14</div>
+                <div class="label">лет</div>
+            </div>
+            <div class="stat-item">
+                <div class="number">∞</div>
+                <div class="label">идей</div>
+            </div>
+            <div class="stat-item">
+                <div class="number">🚀</div>
+                <div class="label">в процессе</div>
+            </div>
+            <div class="stat-item">
+                <div class="number">🎧</div>
+                <div class="label">трек создан</div>
+            </div>
+        </div>
+
+        <!-- Проекты -->
+        <section class="section" id="projects">
+            <h2 class="section-title">🎧 Проекты</h2>
+            <div class="project-card">
+                <h3>Любовь наперекор чертям</h3>
+                <div class="meta">
+                    <span>🎶 трек</span>
+                    <span>🤖 Suno AI</span>
+                </div>
+                <p>Музыкальный трек, созданный с помощью ИИ на платформе Suno. Экспериментирую со звуком и генеративными технологиями.</p>
+                <a href="https://suno.com/song/aff2ac2e-80e7-420b-ba63-ecf16a055843" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="btn-link">Слушать →</a>
+            </div>
+        </section>
+
+        <div class="footer-note">✦ Марк · 2026 · цифровой эксперимент ✦</div>
+    </div>
+
+    <script>
+        (function() {
+            const skillsData = [
+                {
+                    id: 'logic',
+                    label: '🧠 Логика программирования',
+                    description: 'Алгоритмы, условия, циклы — учусь мыслить структурно и решать задачи.'
+                },
+                {
+                    id: 'creative',
+                    label: '✨ Креативность',
+                    description: 'Генеративные идеи, музыка с AI, эксперименты со звуком и дизайном.'
+                },
+                {
+                    id: 'itmouse',
+                    label: '🏫 IT-школа (iTMOUSE)',
+                    description: 'Учусь в IT-школе iTMOUSE: осваиваю программирование, алгоритмы и современные технологии.'
+                }
+            ];
+
+            const grid = document.getElementById('skillsGrid');
+            const descContainer = document.getElementById('skillDescriptions');
+
+            skillsData.forEach((skill) => {
+                const badge = document.createElement('div');
+                badge.className = 'skill-badge';
+                badge.dataset.skillId = skill.id;
+                badge.textContent = skill.label;
+                grid.appendChild(badge);
+
+                const desc = document.createElement('div');
+                desc.className = 'skill-description';
+                desc.id = `desc-${skill.id}`;
+                desc.textContent = skill.description;
+                descContainer.appendChild(desc);
+            });
+
+            const badges = document.querySelectorAll('.skill-badge');
+            const descriptions = document.querySelectorAll('.skill-description');
+
+            badges.forEach((badge) => {
+                badge.addEventListener('click', function() {
+                    const skillId = this.dataset.skillId;
+                    const targetDesc = document.getElementById(`desc-${skillId}`);
+                    if (!targetDesc) return;
+
+                    descriptions.forEach(desc => {
+                        if (desc.id !== `desc-${skillId}`) {
+                            desc.classList.remove('open');
+                        }
+                    });
+                    badges.forEach(b => b.classList.remove('active'));
+
+                    const isOpen = targetDesc.classList.contains('open');
+                    if (isOpen) {
+                        targetDesc.classList.remove('open');
+                        this.classList.remove('active');
+                    } else {
+                        targetDesc.classList.add('open');
+                        this.classList.add('active');
+                    }
+                });
+            });
+
+            // Плавный скролл
+            const projectsBtn = document.getElementById('projectsBtn');
+            if (projectsBtn) {
+                projectsBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.getElementById('projects');
+                    if (!target) return;
+
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+                    const startPosition = window.pageYOffset;
+                    const distance = targetPosition - startPosition;
+                    const duration = 1400;
+                    let startTime = null;
+
+                    function easeInOutCubic(t) {
+                        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+                    }
+
+                    function animation(currentTime) {
+                        if (startTime === null) startTime = currentTime;
+                        const timeElapsed = currentTime - startTime;
+                        const progress = Math.min(timeElapsed / duration, 1);
+                        const easeProgress = easeInOutCubic(progress);
+                        
+                        window.scrollTo(0, startPosition + distance * easeProgress);
+
+                        if (timeElapsed < duration) {
+                            requestAnimationFrame(animation);
+                        }
+                    }
+
+                    requestAnimationFrame(animation);
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
