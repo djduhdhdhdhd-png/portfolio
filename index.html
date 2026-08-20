@@ -311,27 +311,42 @@
             margin: 0.5rem 0 0.8rem;
         }
 
-        /* ===== ПРОЕКТЫ ===== */
+        /* ===== ПРОЕКТЫ — СЕТКА ===== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
         .project-card {
             background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(200, 180, 255, 0.04);
             border-radius: 28px;
-            padding: 1.2rem 1.5rem 1.5rem;
-            max-width: 500px;
+            padding: 1.5rem 1.2rem 1.2rem;
             box-shadow: 0 12px 30px -6px rgba(0,0,0,0.6);
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
             border-left: 3px solid #9a7ad0;
-            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            min-height: 220px;
         }
 
         .project-card:hover {
-            transform: translateY(-3px);
+            transform: translateY(-6px);
             box-shadow: 0 20px 40px -8px rgba(0,0,0,0.8);
+            border-color: #b090f0;
+        }
+
+        .project-card .icon {
+            font-size: 2rem;
+            margin-bottom: 0.3rem;
         }
 
         .project-card h3 {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: 600;
             letter-spacing: -0.02em;
             background: linear-gradient(135deg, #f0ecff, #b8a0f0);
@@ -343,38 +358,40 @@
 
         .project-card .meta {
             color: #a090c0;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             margin-bottom: 0.6rem;
             display: flex;
-            gap: 0.6rem;
+            gap: 0.5rem;
             flex-wrap: wrap;
         }
 
         .project-card .meta span {
             background: rgba(255,255,255,0.02);
-            padding: 0.1rem 0.8rem;
+            padding: 0.05rem 0.7rem;
             border-radius: 30px;
             border: 1px solid rgba(255,255,255,0.02);
         }
 
         .project-card p {
             color: #c0b0d8;
-            margin: 0.5rem 0 1rem;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             line-height: 1.5;
+            flex: 1;
+            margin-bottom: 0.8rem;
         }
 
         .project-card .btn-link {
             background: transparent;
             border: 1px solid #9a7ad0;
             color: #c8b8e8;
-            padding: 0.3rem 1.4rem;
+            padding: 0.3rem 1.2rem;
             border-radius: 60px;
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             transition: all 0.2s;
             display: inline-block;
+            align-self: flex-start;
         }
 
         .project-card .btn-link:hover {
@@ -713,7 +730,7 @@
             .hero { min-height: 50vh; }
             .hero__intro { font-size: 0.85rem; }
             .skill-badge { font-size: 0.8rem; padding: 0.2rem 1rem; }
-            .project-card { padding: 1rem; }
+            .project-card { padding: 1rem; min-height: 180px; }
             .quote-block { padding: 1rem; }
             .stat-item { padding: 0.5rem 1rem; min-width: 60px; }
             .terminal { font-size: 0.7rem; padding: 0.8rem; }
@@ -721,6 +738,7 @@
             .scroll-top { bottom: 1rem; right: 1rem; width: 38px; height: 38px; font-size: 1rem; }
             .sun { width: 180px; height: 180px; bottom: -40px; right: -40px; }
             .plans-grid { grid-template-columns: 1fr 1fr; }
+            .projects-grid { grid-template-columns: 1fr; }
         }
 
         html {
@@ -836,33 +854,51 @@
         <!-- ===== ПРОЕКТЫ ===== -->
         <section class="section" id="projects">
             <h2 class="section-title">🎯 Проекты</h2>
-            
-            <!-- Музыкальный проект -->
-            <div class="project-card">
-                <h3>Любовь наперекор чертям</h3>
-                <div class="meta">
-                    <span>🎶 трек</span>
-                    <span>🤖 Suno AI</span>
+            <div class="projects-grid">
+                <!-- Музыкальный проект -->
+                <div class="project-card">
+                    <div class="icon">🎶</div>
+                    <h3>Любовь наперекор чертям</h3>
+                    <div class="meta">
+                        <span>трек</span>
+                        <span>Suno AI</span>
+                    </div>
+                    <p>Музыкальный трек, созданный с помощью ИИ на платформе Suno. Экспериментирую со звуком и генеративными технологиями.</p>
+                    <a href="https://suno.com/song/aff2ac2e-80e7-420b-ba63-ecf16a055843"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="btn-link">Слушать →</a>
                 </div>
-                <p>Музыкальный трек, созданный с помощью ИИ на платформе Suno. Экспериментирую со звуком и генеративными технологиями.</p>
-                <a href="https://suno.com/song/aff2ac2e-80e7-420b-ba63-ecf16a055843"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="btn-link">Слушать →</a>
-            </div>
 
-            <!-- Игровой проект -->
-            <div class="project-card">
-                <h3>🎮 Моя игра</h3>
-                <div class="meta">
-                    <span>🕹️ игра</span>
-                    <span>⚡ в разработке</span>
+                <!-- Игровой проект -->
+                <div class="project-card">
+                    <div class="icon">🎮</div>
+                    <h3>Моя игра</h3>
+                    <div class="meta">
+                        <span>игра</span>
+                        <span>в разработке</span>
+                    </div>
+                    <p>Игра, которую я создаю. Здесь можно управлять персонажем, стрелять и проходить уровни. Попробуй!</p>
+                    <a href="https://djduhdhdhdhd-png.github.io/game/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="btn-link">Играть →</a>
                 </div>
-                <p>Игра, которую я создаю. Здесь можно управлять персонажем, стрелять и проходить уровни. Попробуй!</p>
-                <a href="https://djduhdhdhdhd-png.github.io/game/"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="btn-link">Играть →</a>
+
+                <!-- Telegram-бот -->
+                <div class="project-card">
+                    <div class="icon">🤖</div>
+                    <h3>Telegram-бот</h3>
+                    <div class="meta">
+                        <span>бот</span>
+                        <span>активен</span>
+                    </div>
+                    <p>Мой Telegram-бот @hyzhen_bot. Он умеет общаться и выполнять команды. Напиши ему в Telegram!</p>
+                    <a href="https://t.me/hyzhen_bot"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="btn-link">Перейти →</a>
+                </div>
             </div>
         </section>
 
